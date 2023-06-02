@@ -39,8 +39,7 @@ function addElementToList(listName, inputId) {
 window.onload = (ev) => {
 
     const titleText = 'Práctica 1 - Lista de tareas';
-    const title = commons.createElement('title');
-    title.innerText = titleText;
+    const title = commons.createElementWithInnerText('title', titleText);
 
     const header = commons.createElement('header');
     const main = commons.createElement('main');
@@ -48,8 +47,7 @@ window.onload = (ev) => {
     const article = commons.createElement('article');
     const article1 = commons.createElement('article');
 
-    const h1 = commons.createElement('h1');
-    h1.innerText = titleText;
+    const h1 = commons.createElementWithInnerText('h1', titleText);
 
     const div = commons.createElement('div');
 
@@ -59,12 +57,12 @@ window.onload = (ev) => {
     const input = createInput(inputId, 'taskName', 'Nombre de la tarea');
 
     const listId = 'list';
+
     const button = createButton('addTask', 'addTask', 'Agregar');
     button.addEventListener("click", () => addElementToList(listId, inputId));
 
+    const h12 = commons.createElementWithInnerText('h1', 'Lista de tareas');
     const ul = commons.createElement('ul', [{name: 'id', value: listId}]);
-    const h12 = commons.createElement('h1');
-    h12.innerText = 'Lista de tareas';
 
     const elements = [{parent: document.head, child: title},
                       {parent: header, child: h1},
