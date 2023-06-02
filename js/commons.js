@@ -1,7 +1,3 @@
-export function hello() {
-    console.log("Hola Mundo");
-}
-
 export function createElement(name, attributes) {
     const element = document.createElement(name);
 

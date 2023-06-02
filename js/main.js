@@ -37,7 +37,6 @@ function addElementToList(listName, inputId) {
 }
 
 window.onload = (ev) => {
-    commons.hello();
 
     const titleText = 'Práctica 1 - Lista de tareas';
     const title = commons.createElement('title');
@@ -67,17 +66,21 @@ window.onload = (ev) => {
     const h12 = commons.createElement('h1');
     h12.innerText = 'Lista de tareas';
 
-    commons.appendChildToParent(document.head, title);
-    commons.appendChildToParent(header, h1);
-    commons.appendChildToParent(document.body, header)
-    commons.appendChildToParent(document.body, main)
-    commons.appendChildToParent(main, section)
-    commons.appendChildToParent(section, article)
-    commons.appendChildToParent(article, div)
-    commons.appendChildToParent(div, label);
-    commons.appendChildToParent(div, input);
-    commons.appendChildToParent(div, button);
-    commons.appendChildToParent(section, article1);
-    commons.appendChildToParent(article1, h12);
-    commons.appendChildToParent(article1, ul);
+    const elements = [{parent: document.head, child: title},
+                      {parent: header, child: h1},
+                      {parent: document.body, child: header},
+                      {parent: document.body, child: main},
+                      {parent: main, child: section},
+                      {parent: section, child: article},
+                      {parent: article, child: div},
+                      {parent: div, child: label},
+                      {parent: div, child: input},
+                      {parent: div, child: button},
+                      {parent: section, child: article1},
+                      {parent: article1, child: h12},
+                      {parent: article1, child: ul}];
+
+    elements.forEach(element => {
+        commons.appendChildToParent(element.parent, element.child);
+    });
 }
