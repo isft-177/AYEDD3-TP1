@@ -1,5 +1,9 @@
 import * as commons from './commons.js';
 
+function createLabel(inpuntName) {
+    const labelAttributes = [{name: 'for', value: inpuntName}];
+    return commons.createElement('label', labelAttributes);
+}
 function createInput(id, name, placeholder) {
     const inputAttributes = [{name: 'type', value: 'text'},
         {name: 'id', value: id},
@@ -36,10 +40,20 @@ function addElementToList(listName, inputId) {
     input.value = '';
 }
 
+
 window.onload = (ev) => {
 
-    const titleText = 'Práctica 1 - Lista de tareas';
-    const title = commons.createElementWithInnerText('title', titleText);
+    //Constants
+    const TITLE_TEXT = 'Práctica 1 - Lista de tareas';
+    const TASK_NAME = 'taskName';
+    const LIST_ID = 'list';
+    const ADD_TASK = 'addTask';
+    const TASK_NAME_PLACEHOLDER = 'Nombre de la tarea';
+    const LIST_OF_TASKS = 'Lista de tareas';
+    const ADD = 'Agregar';
+
+    //Elements
+    const title = commons.createElementWithInnerText('title', TITLE_TEXT);
 
     const header = commons.createElement('header');
     const main = commons.createElement('main');
@@ -47,22 +61,18 @@ window.onload = (ev) => {
     const article = commons.createElement('article');
     const article1 = commons.createElement('article');
 
-    const h1 = commons.createElementWithInnerText('h1', titleText);
+    const h1 = commons.createElementWithInnerText('h1', TITLE_TEXT);
 
     const div = commons.createElement('div');
 
-    const inputId = 'taskName';
-    const labelAttributes = [{name: 'for', value: 'taskName'}];
-    const label = commons.createElement('label', labelAttributes);
-    const input = createInput(inputId, 'taskName', 'Nombre de la tarea');
+    const label = createLabel(TASK_NAME);
+    const input = createInput(TASK_NAME, TASK_NAME, TASK_NAME_PLACEHOLDER);
 
-    const listId = 'list';
+    const button = createButton(ADD_TASK, ADD_TASK, ADD);
+    button.addEventListener("click", () => addElementToList(LIST_ID, TASK_NAME));
 
-    const button = createButton('addTask', 'addTask', 'Agregar');
-    button.addEventListener("click", () => addElementToList(listId, inputId));
-
-    const h12 = commons.createElementWithInnerText('h1', 'Lista de tareas');
-    const ul = commons.createElement('ul', [{name: 'id', value: listId}]);
+    const h12 = commons.createElementWithInnerText('h1', LIST_OF_TASKS);
+    const ul = commons.createElement('ul', [{name: 'id', value: LIST_ID}]);
 
     const elements = [{parent: document.head, child: title},
                       {parent: header, child: h1},
@@ -78,6 +88,7 @@ window.onload = (ev) => {
                       {parent: article1, child: h12},
                       {parent: article1, child: ul}];
 
+    //Add elements to DOM
     elements.forEach(element => {
         commons.appendChildToParent(element.parent, element.child);
     });
