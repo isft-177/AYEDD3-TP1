@@ -19,6 +19,15 @@ export function createElementWithInnerText(elementName, innerText) {
     return h1;
 }
 
+export function createElementWithTextNode(elementName, text) {
+    const parent = createElement(elementName);
+    const textNode = document.createTextNode(text);
+
+    parent.appendChild(textNode);
+
+    return parent;
+}
+
 export function createLabel(inputName, innerText) {
     const labelAttributes = [{name: 'for', value: inputName}];
     const label = createElement('label', labelAttributes);

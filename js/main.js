@@ -1,4 +1,5 @@
 import * as commons from './commons.js';
+import {createElementWithTextNode} from "./commons.js";
 
 function addElementToList(listName, inputId) {
 
@@ -38,7 +39,7 @@ window.onload = (ev) => {
     const article = commons.createElement('article');
     const article1 = commons.createElement('article');
 
-    const h1 = commons.createElementWithInnerText('h1', TITLE_TEXT);
+    const h1 = commons.createElementWithTextNode('h1', TITLE_TEXT);
 
     const div = commons.createElement('div');
 
@@ -48,7 +49,7 @@ window.onload = (ev) => {
     const button = commons.createButton(ADD_TASK, ADD_TASK, ADD);
     button.addEventListener("click", () => addElementToList(LIST_ID, TASK_NAME));
 
-    const h12 = commons.createElementWithInnerText('h1', LIST_OF_TASKS);
+    const h12 = commons.createElementWithTextNode('h1', LIST_OF_TASKS);
     const ul = commons.createElement('ul', [{name: 'id', value: LIST_ID}]);
 
     const elements = [{parent: document.head, child: title},
