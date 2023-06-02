@@ -1,29 +1,6 @@
 import * as commons from './commons.js';
 
-function createLabel(inpuntName) {
-    const labelAttributes = [{name: 'for', value: inpuntName}];
-    return commons.createElement('label', labelAttributes);
-}
-function createInput(id, name, placeholder) {
-    const inputAttributes = [{name: 'type', value: 'text'},
-        {name: 'id', value: id},
-        {name: 'name', value: name},
-        {name: 'placeholder', value: placeholder}]
-
-    return commons.createElement('input', inputAttributes);
-}
-
-function createButton(id, name, value) {
-    const buttonAttributes = [{name: 'type', value: 'button'},
-        {name: 'id', value: id},
-        {name: 'name', value: name},
-        {name: 'value', value: value}]
-
-    return commons.createElement('input', buttonAttributes);
-}
-
 function addElementToList(listName, inputId) {
-
 
     const ul = document.querySelector(`#${listName}`);
     const input = document.querySelector(`#${inputId}`);
@@ -65,10 +42,10 @@ window.onload = (ev) => {
 
     const div = commons.createElement('div');
 
-    const label = createLabel(TASK_NAME);
-    const input = createInput(TASK_NAME, TASK_NAME, TASK_NAME_PLACEHOLDER);
+    const label = commons.createLabel(TASK_NAME);
+    const input = commons.createInput(TASK_NAME, TASK_NAME, TASK_NAME_PLACEHOLDER);
 
-    const button = createButton(ADD_TASK, ADD_TASK, ADD);
+    const button = commons.createButton(ADD_TASK, ADD_TASK, ADD);
     button.addEventListener("click", () => addElementToList(LIST_ID, TASK_NAME));
 
     const h12 = commons.createElementWithInnerText('h1', LIST_OF_TASKS);
